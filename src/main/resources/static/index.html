@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+<div class="outer_box">
+    <div class="filterImg"></div>
+    <div class="login_box">
+        <h1><img src="images/tx.jpg" alt=""></h1>
+        <p><i class="iconfont">&#xe74f;</i><input id="username" type="text" value=""></p>
+        <p><i class="iconfont">&#xe774;</i><input id="password" type="password" value=""></p>
+        <p class="logIn_btn" type="button" onclick="Deng()">登录</p>
+        <div><span id="zc" onclick="ZC()">立即注册</span><span>忘记密码</span></div>
+    </div>
+</div>
+<script>
+    var x=  document.getElementById("username")//获取输入框元素
+    var y=  document.getElementById("password") //获取id为html的元素
+    function Deng(){
+
+        //第一步，创建XMLHttpRequest对象
+        var xhrRes;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("get", "http://localhost:8082/test/sign?username="+x.value+"&password="+y.value, true);
+        xmlHttp.send();
+        xmlHttp.onreadystatechange = function(e) {
+            console.log('onreadystatechange。e====>' + JSON.stringify(e));
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                xhrRes = xmlHttp.responseText;
+                console.log('return message====>' + xhrRes);
+            }
+            if (xhrRes === "true"){
+                window.location.href='http://www.baidu.com';
+            }else if (xhrRes === "false"){
+                window.alert("请检查账号密码！")
+            }
+    }
+    }
+    function ZC() {
+        window.location.href='http://localhost:63342/glxt/static/page/zhuce.html?_ijt=4rdg02rm57lqhjbc86uj92vvhe';
+    }
+
+</script>
+</body>
+</html>
