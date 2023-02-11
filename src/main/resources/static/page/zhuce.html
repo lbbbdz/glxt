@@ -18,18 +18,8 @@
                 用户名称：<input type="text" id="yhmc" placeholder="请输入用户名！" style="width: 400px;height: 30px;"><br><br>
                 登录密码：<input type="password" id="dlmm" placeholder="请输入登录密码！" style="width: 400px;height: 30px;"><br><br>
                 重复密码：<input type="password" id="cfmm" placeholder="请输入您的确认密码！" style="width: 400px;height: 30px;"><br><br>
-                姓名：<input type="text" id="xm" placeholder="请输入您的姓名！" style="width: 400px;height: 30px;"><br><br>
-                性别：<input type="radio" name="sex" checked>男
-                <input type="radio" name="sex" >女<br><br>
-                年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：
-                <input type="text" id="nl" placeholder="请输入您的年龄！" style="width: 400px;height: 30px;"><br><br>
-<!--                <select name="fruit" style="height: 30px;width: 400px;" align="left">-->
-<!--                    <option value="1">老师</option>-->
-<!--                    <option value="2" selected="selected">学生</option>-->
-<!--                    <option value="3">国家公务人员</option>-->
-<!--                    <option value="4">其他</option>-->
-<!--                </select><br><br>-->
-                家庭住址： <label for="awards"></label><textarea id="awards" cols="1" rows="3" style="width: 400px;height: 100px;"></textarea><br><br>
+                手机号码：<input type="text" id="sjhm" placeholder="请输入您的手机号码！" style="width: 400px;height: 30px;"><br><br>
+                邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" id="yx" placeholder="请输入您的邮箱！" style="width: 400px;height: 30px;"><br><br>
                 <hr><br>
                 <input type="button" value="注册" onclick="zc()" style="width: 100px;height: 25px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="reset" value="重置"  style="width: 100px;height: 25px;">
@@ -43,14 +33,13 @@
         var username = document.getElementById("yhmc").value;
         var password = document.getElementById("dlmm").value;
         var password1 = document.getElementById("cfmm").value;
-        var nikename = document.getElementById("xm").value;
-        var age = document.getElementById("nl").value;
-        var sex = document.getElementsByName("sex").value;
-        var address = document.getElementById("awards").value;
+        var phone = document.getElementById("sjhm").value;
+        var email = document.getElementById("yx").value;
+
 
     if (password == password1){
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("get","http://localhost:8082/test/zc?username="+username+"&password="+password+"&nikename="+nikename+"&address="+address+"&age="+age+"&sex="+sex,true);
+    xmlHttp.open("get","http://localhost:8082/test/zc?username="+username+"&password="+password+"&phone="+phone+"&email="+email,true);
     xmlHttp.send();
     }else {
         window.alert("请确认两次密码一致！")

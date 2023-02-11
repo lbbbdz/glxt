@@ -1,18 +1,14 @@
 package com.example.demo.Controller;
 
-import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.example.demo.Service.LoginService;
-import com.example.demo.entity.User1;
+import com.example.demo.entity.Glxt_User;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.netty.util.internal.StringUtil;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/test")
@@ -22,7 +18,7 @@ public class LoginController {
     LoginService loginService;
     @GetMapping("/test")
     public JSONPObject test() {
-        List<User1> list = new ArrayList<>();
+        List<Glxt_User> list = new ArrayList<>();
 
         list = loginService.grouser1();
 
@@ -43,7 +39,7 @@ public class LoginController {
     }
 
     @GetMapping("/zc")
-    public boolean Zc(String username,String password,String nikename,String age,String address,String sex){
-        return loginService.saveuser(username,password,nikename,age,sex,address);
+    public boolean Zc(String username,String password,String phone,String email){
+        return loginService.saveuser(username,password,phone,email);
     }
 }

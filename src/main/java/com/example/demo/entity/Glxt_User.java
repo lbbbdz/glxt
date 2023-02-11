@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
-public class User1 implements Serializable {
+public class Glxt_User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,13 +19,10 @@ public class User1 implements Serializable {
 
     private String password;
 
-    private String nikename;
+    private String phone;
 
-    private String age;
+    private String email;
 
-    private String sex;
-
-    private String address;
 
     public String getId() {
         return id;
@@ -51,35 +48,30 @@ public class User1 implements Serializable {
         this.password = password;
     }
 
-    public String getNikename() {
-        return nikename;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNikename(String nikename) {
-        this.nikename = nikename;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public String toString() {
+        return "Glxt_User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
