@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
 
