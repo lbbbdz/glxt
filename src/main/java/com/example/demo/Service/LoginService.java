@@ -12,5 +12,5 @@ public interface LoginService extends IService<Glxt_User> {
 
     boolean getflage(String username,String password);
 
-    boolean saveuser(String username,String password,String phone,String email);
+    boolean saveuser(String username,String password,String phone,String email) throws Exception;
 }

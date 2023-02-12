@@ -34,9 +34,14 @@ public class LoginServiceImpl extends ServiceImpl<LoginMapper, Glxt_User> implem
 
 
     @Override
-    public boolean saveuser(String username,String password,String phone,String email) {
+    public boolean saveuser(String username,String password,String phone,String email) throws Exception {
         boolean flage = false;
-        flage = loginMapper.saveuser(username,password,phone,email);
-        return flage;
+        int num = loginMapper.getusercount(username);
+        if (num > 0){
+            throw new Exception("这里有个错误异常");
+        }else {
+            flage = loginMapper.saveuser(username, password, phone, email);
+            return flage;
+        }
     }
 }

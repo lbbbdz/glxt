@@ -14,7 +14,7 @@
         <p><i class="iconfont">&#xe74f;</i><input id="username" type="text" value=""></p>
         <p><i class="iconfont">&#xe774;</i><input id="password" type="password" value=""></p>
         <p class="logIn_btn" type="button" onclick="Deng()">登录</p>
-        <div><span id="zc" onclick="ZC()">立即注册</span><span>忘记密码</span></div>
+        <div><span id="zc" onclick="ZC()">立即注册</span><span id="wjmm" onclick="WJMM()">忘记密码</span></div>
     </div>
 </div>
 <script>
@@ -41,8 +41,11 @@
     }
     }
     function ZC() {
-        window.location.href='http://localhost:63342/glxt/static/page/zhuce.html?_ijt=4rdg02rm57lqhjbc86uj92vvhe';
+        window.location.href='http://localhost:8082/page/zhuce.html';
     }
+     function WJMM() {
+        window.location.href='http://localhost:8082/page/chongzhi.html';
+     }
 
 </script>
 </body>

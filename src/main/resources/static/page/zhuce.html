@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        body {
-            background-image: url("./images/login.jpg");
-        }
-    </style>
 </head>
-<body>
+<body background="../images/login.jpg">
 <table border="1" width="800" height="500" align="center" background-color="#FF6699">
     <tr>
         <td bgcolor="#F3F3FA">
@@ -50,14 +45,17 @@
     }
 
     xmlHttp.onreadystatechange = function(e) {
+
         console.log('onreadystatechange。e====>' + JSON.stringify(e));
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-            xhrRes = xmlHttp.body;
+            xhrRes = xmlHttp.responseText;
             console.log('return message====>' + xhrRes);
         }
-        window.alert(xhrRes);
-        if (xhrRes === "true"){
+
+        if (xhrRes === 'true'){
             window.alert("注册成功！")
+        }else if (xhrRes === 'false'){
+            window.alert("请更正信息后，继续注册！")
         }
     }
     }

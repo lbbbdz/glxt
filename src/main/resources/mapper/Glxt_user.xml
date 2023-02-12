@@ -12,4 +12,7 @@
     <select id="getPassword" resultType="java.lang.String">
         SELECT password from glxt_user where username = #{username};
     </select>
+    <select id="getusercount" resultType="java.lang.Integer">
+        SELECT count(*) from glxt_user where username = #{username};
+    </select>
 </mapper>

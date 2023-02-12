@@ -8,6 +8,7 @@ import io.netty.util.internal.StringUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,6 @@ public class LoginController {
     @GetMapping("/zc")
     public boolean Zc(String username, String password, String phone, String email) throws Exception {
 
-
-        return loginService.saveuser(username,password,phone,email);
+        return loginService.saveuser(username,password,phone,email) ;
     }
 }

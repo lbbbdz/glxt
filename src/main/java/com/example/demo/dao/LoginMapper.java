@@ -15,4 +15,6 @@ public interface LoginMapper  extends BaseMapper<Glxt_User> {
     String getPassword(@Param("username") String username);
 
     boolean saveuser(@Param("username")String username,@Param("password")String password,@Param("phone")String phone,@Param("email") String email);
+
+    int getusercount(@Param("username")String username);
 }
