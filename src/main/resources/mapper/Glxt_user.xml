@@ -4,13 +4,16 @@
     <insert id="saveuser">
         insert into glxt_user values(UUID(),#{username},#{password},#{phone},#{email});
     </insert>
+    <update id="updatapassword">
+        update glxt_user set password = #{password} where username = #{username};
+    </update>
 
 
     <select id="getter1" resultType="com.example.demo.entity.Glxt_User">
         SELECT * from User1;
     </select>
-    <select id="getPassword" resultType="java.lang.String">
-        SELECT password from glxt_user where username = #{username};
+    <select id="getPassword" resultType="map">
+        SELECT password,isdisable from glxt_user where username = #{username};
     </select>
     <select id="getusercount" resultType="java.lang.Integer">
         SELECT count(*) from glxt_user where username = #{username};

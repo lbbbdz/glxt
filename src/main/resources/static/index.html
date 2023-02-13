@@ -26,17 +26,19 @@
         var xhrRes;
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("get", "http://localhost:8082/test/sign?username="+x.value+"&password="+y.value, true);
+
         xmlHttp.send();
         xmlHttp.onreadystatechange = function(e) {
             console.log('onreadystatechange。e====>' + JSON.stringify(e));
             if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-                xhrRes = xmlHttp.responseText;
+
+                xhrRes = JSON.parse(xmlHttp.response);
                 console.log('return message====>' + xhrRes);
             }
-            if (xhrRes === "true"){
+            if (xhrRes.code === 0){
                 window.location.href='http://www.baidu.com';
-            }else if (xhrRes === "false"){
-                window.alert("请检查账号密码！")
+            }else if (xhrRes.code === 1){
+                window.alert(xhrRes.msg);
             }
     }
     }

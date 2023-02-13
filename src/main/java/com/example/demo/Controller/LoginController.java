@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Service.LoginService;
 import com.example.demo.entity.Glxt_User;
+import com.example.tool.R;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.netty.util.internal.StringUtil;
 
@@ -32,19 +33,26 @@ public class LoginController {
 
 
     @GetMapping("/sign")
-    public boolean Sign(String username,String password) {
+    public R Sign(String username,String password) {
         boolean flage;
         if (username.equals("")  || StringUtil.isNullOrEmpty(username) || password.equals("") || StringUtil.isNullOrEmpty(password)){
-            return false;
+            flage = false;
         }
-
         flage = loginService.getflage(username,password);
-        return flage;
+        return flage ? R.ok("“登录成功") : R.error(1,"请联系管理员查看是否禁用或密码输入错误");
     }
 
     @GetMapping("/zc")
-    public boolean Zc(String username, String password, String phone, String email) throws Exception {
+    public R Zc(String username, String password, String phone, String email) throws Exception {
+        boolean flage =false;
+        flage = loginService.saveuser(username,password,phone,email);
+        return  flage ? R.ok("注册成功") : R.error(1,"用户名被占用");
+    }
 
-        return loginService.saveuser(username,password,phone,email) ;
+    @GetMapping("/cz")
+    public R Cz(String username, String password) throws Exception {
+        boolean flage =false;
+        flage = loginService.updatapassword(username,password);
+        return  flage ? R.ok("修改成功") : R.error(1,"请确认用户名是否存在");
     }
 }
