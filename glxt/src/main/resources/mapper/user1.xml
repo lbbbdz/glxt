@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.LoginMapper">
+    <insert id="saveuser">
+        insert into user1 values(UUID(),#{username},#{password},#{nikename},#{age},#{sex},#{address});
+    </insert>
+
+
+    <select id="getter1" resultType="com.example.demo.entity.Glxt_User">
+        SELECT * from User1;
+    </select>
+    <select id="getPassword" resultType="java.lang.String">
+        SELECT password from User1 where username = #{username};
+    </select>
+</mapper>
