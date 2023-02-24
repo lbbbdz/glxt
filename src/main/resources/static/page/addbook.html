@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body background="../images/logn.jpg">
+<table border="1" width="800" height="500" align="center" background-color="#FF6699" style="margin-top: 150px;">
+    <tr>
+        <td>
+            <h2 align="center"><img src="./2.png" alt="" height="40" widt="50">&nbsp;&nbsp;&nbsp;&nbsp;用户注册</h2><br>
+            <form action="" align="center" >
+                序&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" id="xh" placeholder="请输入序号！" style="width: 400px;height: 30px;"><br><br>
+                书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" id="sm" placeholder="请输入书名！" style="width: 400px;height: 30px;"><br><br>
+                作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者：<input type="text" id="zz" placeholder="请输入作者！" style="width: 400px;height: 30px;"><br><br>
+                出&nbsp;版&nbsp;社：<input type="text" id="cbs" placeholder="请输入出版社！"  style="width: 400px;height: 30px;"><br><br>
+                价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：<input type="text" id="jg" placeholder="请输入价格！" style="width: 400px;height: 30px;"><br><br>
+                <hr><br>
+                <input type="button" value="提交" onclick="tj()" style="width: 100px;height: 25px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="重置"  style="width: 100px;height: 25px;">
+            </form>
+        </td>
+    </tr>
+</table>
+<script>
+
+    function tj() {
+        var xhrRes;
+        var book = {
+            serialnumber : document.getElementById("xh").value,
+            bookname : document.getElementById("sm").value,
+            bookprice : document.getElementById("jg").value,
+            author : document.getElementById("zz").value,
+            press : document.getElementById("cbs").value,
+        };
+
+
+        //ajax 单个对象传值
+        $.ajax({
+            url:"http://localhost:8082/home/addbook1",
+            type:"Post",
+            dataType : "JSON",
+            contentType:"application/json",
+            data:JSON.stringify(book),
+            success:function(data){
+                //业务
+            },
+        })
+
+
+
+
+
+
+        // var username = document.getElementById("yhmc").value;
+        // var password = document.getElementById("dlmm").value;
+        // var password1 = document.getElementById("cfmm").value;
+        // var phone = document.getElementById("sjhm").value;
+        // var email = document.getElementById("yx").value;
+
+            /*var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("get","http://localhost:8082/test/addbook1?book="+book,true);
+            xmlHttp.send();
+
+        xmlHttp.onreadystatechange = function(e) {
+
+            console.log('onreadystatechange。e====>' + JSON.stringify(e));
+            if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+                xhrRes = JSON.parse(xmlHttp.response);
+                console.log('return message====>' + xhrRes);
+            }
+            if (xhrRes.code === 0){
+                window.alert(xhrRes.msg)
+            }else if (xhrRes.code === 1){
+                window.alert(xhrRes.msg)
+            }
+        }*/
+    }
+</script>
+</body>
+</html>

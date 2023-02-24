@@ -7,6 +7,7 @@ import com.example.demo.entity.Glxt_Books;
 import com.example.tool.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,21 @@ public class HomeController {
         map.put("msg","加载成功");
         map.put("data",books);
         return R.ok(map);
+    }
+
+
+
+    @PostMapping("/addbook1")
+    public R Xzsj(@RequestBody Glxt_Books book) throws Exception {
+        boolean flage =false;
+        Map<String,Object> map = new HashMap<>();
+        map.put("author",book.getAuthor());
+        map.put("bookname",book.getBookname());
+        map.put("bookprice",book.getBookprice());
+        map.put("press",book.getPress());
+        map.put("serialnumber",book.getSerialnumber());
+
+        flage = homeService.addbook(map);
+        return  flage ? R.ok("修改成功") : R.error(1,"请确认用户名是否存在");
     }
 }

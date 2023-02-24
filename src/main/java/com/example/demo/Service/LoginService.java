@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
+
 @Component
 public interface LoginService extends IService<Glxt_User> {
 
@@ -15,5 +17,7 @@ public interface LoginService extends IService<Glxt_User> {
     boolean saveuser(String username,String password,String phone,String email) throws Exception;
 
     boolean updatapassword(String username,String password);
+
+
 
 }

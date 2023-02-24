@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.demo.Service.LoginService;
+import com.example.demo.entity.Glxt_Books;
 import com.example.demo.entity.Glxt_User;
 import com.example.tool.R;
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -70,6 +73,10 @@ public class LoginController {
         flage = loginService.updatapassword(username,password);
         return  flage ? R.ok("修改成功") : R.error(1,"请确认用户名是否存在");
     }
+
+
+
+
 
 
 }

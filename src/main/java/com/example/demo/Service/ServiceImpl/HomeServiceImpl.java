@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class HomeServiceImpl extends ServiceImpl<HomeMapper, Glxt_Books> implements HomeService {
@@ -17,5 +18,11 @@ HomeMapper homeMapper;
     @Override
     public List<Glxt_Books> getBooks() {
         return homeMapper.getBooks();
+    }
+
+
+    @Override
+    public boolean addbook(Map<String, Object> map) {
+        return homeMapper.addbook(map);
     }
 }
