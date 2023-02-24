@@ -47,6 +47,6 @@ public class HomeController {
         map.put("serialnumber",book.getSerialnumber());
 
         flage = homeService.addbook(map);
-        return  flage ? R.ok("修改成功") : R.error(1,"请确认用户名是否存在");
+        return  flage ? R.ok("新增成功！") : R.error(1,"新增失败请联系管理员");
     }
 }

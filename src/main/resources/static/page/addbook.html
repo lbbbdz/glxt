@@ -45,8 +45,8 @@
             dataType : "JSON",
             contentType:"application/json",
             data:JSON.stringify(book),
-            success:function(data){
-                //业务
+            "success":function(data){
+                window.alert(data.msg);
             },
         })
 
