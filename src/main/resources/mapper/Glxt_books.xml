@@ -6,6 +6,6 @@
     </insert>
 
     <select id="getBooks" resultType="com.example.demo.entity.Glxt_Books">
-        SELECT  id,serialnumber,bookname,bookprice,author,press  FROM glxt_books
+        SELECT  id,serialnumber,bookname,bookprice,author,press  FROM glxt_books order by serialnumber
     </select>
 </mapper>
