@@ -25,4 +25,9 @@ HomeMapper homeMapper;
     public boolean addbook(Map<String, Object> map) {
         return homeMapper.addbook(map);
     }
+
+    @Override
+    public boolean removebook(String id) {
+        return false;
+    }
 }

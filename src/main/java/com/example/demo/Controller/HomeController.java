@@ -6,10 +6,7 @@ import com.example.demo.Service.HomeService;
 import com.example.demo.entity.Glxt_Books;
 import com.example.tool.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,5 +45,13 @@ public class HomeController {
 
         flage = homeService.addbook(map);
         return  flage ? R.ok("新增成功！") : R.error(1,"新增失败请联系管理员");
+    }
+
+
+    @GetMapping("/removebook")
+    public R removebook(String id) throws Exception {
+        boolean flage;
+        flage = homeService.removebook(id);
+        return  flage ? R.ok("删除成功！") : R.error(1,"删除失败请联系管理员");
     }
 }

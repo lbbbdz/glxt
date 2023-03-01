@@ -136,16 +136,47 @@
     </div>
 </div>
 <script>
+
     $(function () {
         $.post("http://localhost:8082/home/tslb",function (resp) {
-            console.log(resp);
             var html = "";
+                var cs;
             for (var i=0;i<resp.data.length;i++){
-                html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'>删除</a> </td> </tr>"
+                cs = 'id="'+resp.data[i].id+'"';
+
+                html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+
             }
             $("#context").html(html);
         })
     })
+
+    function sc(param1) {
+        var xhrRes;
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open("get","http://localhost:8082/home/removebook?id="+param1,true);
+        // xmlHttpRequest.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+        // alert(param1);
+        xmlHttpRequest.send(param1);
+
+        xmlHttpRequest.onreadystatechange = function(e) {
+
+            console.log('onreadystatechange。e====>' + JSON.stringify(e));
+
+            if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+                xhrRes = JSON.parse(xmlHttpRequest.response);
+                console.log('return message====>' + xhrRes);
+            }
+            if (xhrRes.code === 0){
+                window.alert(xhrRes.msg)
+            }else if (xhrRes.code === 1){
+                window.alert(xhrRes.msg)
+            }
+        }
+    }
+
+
+
 </script>
 </body>
 </html>

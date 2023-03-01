@@ -14,4 +14,6 @@ public interface HomeService extends IService<Glxt_Books> {
     List<Glxt_Books> getBooks();
 
     boolean addbook(Map<String,Object> map);
+
+    boolean removebook(String id);
 }
