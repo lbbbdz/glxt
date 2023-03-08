@@ -28,6 +28,11 @@ HomeMapper homeMapper;
 
     @Override
     public boolean removebook(String id) {
-        return false;
+        return homeMapper.removebook(id);
+    }
+
+    @Override
+    public List<Glxt_Books> selectbook(String bookname) {
+        return homeMapper.selectbook(bookname);
     }
 }

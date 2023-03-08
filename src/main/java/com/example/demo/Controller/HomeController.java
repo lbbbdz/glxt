@@ -54,4 +54,16 @@ public class HomeController {
         flage = homeService.removebook(id);
         return  flage ? R.ok("删除成功！") : R.error(1,"删除失败请联系管理员");
     }
+
+    @GetMapping("/selectbook")
+    public R selectbook(String bookname) throws Exception {
+
+        List<Glxt_Books> list = homeService.selectbook(bookname);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",1);
+        map.put("msg","加载成功");
+        map.put("data",list);
+        return R.ok(map);
+    }
+
 }
