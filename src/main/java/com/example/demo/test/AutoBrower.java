@@ -13,7 +13,7 @@ public class AutoBrower {
     void applicationReadyEvent() {
         System.out.println("应用已经准备就绪 ... 启动浏览器");
         // 这里需要注url:端口号+测试类方法名
-        String url = "http://localhost:8082/index.html";
+        String url = "http://localhost:8082/index1.html";
         Runtime runtime = Runtime.getRuntime();
         try {
             runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);

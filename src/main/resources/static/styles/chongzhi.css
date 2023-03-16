@@ -10,7 +10,7 @@
     width:100%;
     height:100%;
     /*设置背景图片*/
-    background-image: url('../images/logn.jpg');
+    background-image: url('../images/loginx.jpg ');
 
 }
 .main{
@@ -27,7 +27,12 @@
     font-family: "STCaiyun", serif;
     font-size: 68px;
     /*设置发光效果*/
-    text-shadow: 0 0 10px rgb(221, 76, 124),0 0 20px rgb(221, 76, 124),0 0 30px rgb(221, 76, 124),0 0 40px  rgb(221, 76, 124);
+    text-shadow: 0 0 10px rgb(0, 225, 225),0 0 20px rgb(0, 225, 225),0 0 30px rgb(0, 225, 225),0 0 40px  rgb(0, 225, 225);
+}
+
+input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    color: rgb(0, 225, 225);
 }
 
 .content{
@@ -89,6 +94,6 @@ input{
     font-size: 17px;
     font-family: "YouYuan", serif;
     border-radius: 8px;/*设置边框圆角*/
-    background-color:rgba(247, 77, 136, 0.91);/*框背景颜色*/
+    background-color:rgba(0, 225, 225, 0.91);/*框背景颜色*/
     border-color: rgba(243, 47, 116, 0);;/*边框颜色*/
 }

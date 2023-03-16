@@ -52,16 +52,15 @@ public class LoginController {
     }
 
     @GetMapping("/zc")
-    public R Zc(String username, String password, String phone, String email) throws Exception {
+    public R Zc(String username, String password, String email) throws Exception {
         if (username.equals("") || StringUtil.isNullOrEmpty(username)){
             return R.error(1,"用户名不能为空");
         }else if (password.equals("") || StringUtil.isNullOrEmpty(password)){
             return R.error(1,"密码不能为空");
-        }else if (phone.equals("") || StringUtil.isNullOrEmpty(phone)){
-            return R.error(1,"手机不能为空");
         }else if (email.equals("") || StringUtil.isNullOrEmpty(email)){
             return R.error(1,"邮箱不能为空");
         }
+        String phone = "00000000000";
         boolean flage =false;
         flage = loginService.saveuser(username,password,phone,email);
         return  flage ? R.ok("注册成功") : R.error(1,"用户名被占用");
