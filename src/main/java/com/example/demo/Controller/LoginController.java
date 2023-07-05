@@ -1,9 +1,7 @@
 package com.example.demo.Controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.demo.Service.LoginService;
-import com.example.demo.entity.Glxt_Books;
-import com.example.demo.entity.Glxt_User;
+import com.example.demo.entity.GlxtUser;
 import com.example.tool.R;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.netty.util.internal.StringUtil;
@@ -11,11 +9,8 @@ import io.netty.util.internal.StringUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -27,7 +22,7 @@ public class LoginController {
     LoginService loginService;
     @GetMapping("/test")
     public JSONPObject test() {
-        List<Glxt_User> list = new ArrayList<>();
+        List<GlxtUser> list = new ArrayList<>();
 
         list = loginService.grouser1();
 

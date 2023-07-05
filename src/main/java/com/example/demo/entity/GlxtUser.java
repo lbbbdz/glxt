@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
-public class Glxt_User implements Serializable {
+public class GlxtUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

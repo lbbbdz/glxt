@@ -1,16 +1,15 @@
 package com.example.demo.Service;
 
-import com.example.demo.entity.Glxt_User;
+import com.example.demo.entity.GlxtUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 @Component
-public interface LoginService extends IService<Glxt_User> {
+public interface LoginService extends IService<GlxtUser> {
 
-    public List<Glxt_User> grouser1();
+    public List<GlxtUser> grouser1();
 
     boolean getflage(String username,String password);
 

@@ -86,11 +86,11 @@
 
                             <div class="input-group">
 
-                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="关键字">
+                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="书名关键字">
 
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="select" onclick="ss()">搜索</button>
+                        <button type="button" class="btn btn-primary" id="select" onclick="ss(1)">搜索</button>
                     </form>
                     <table class="table table-hover table-striped table-bordered" style="margin-top: 10px">
                         <thead>
@@ -109,22 +109,8 @@
                         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
                     </table>
                     <nav aria-label="Page navigation">
-                        <ul class="pagination pull-right">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+                        <ul id="ye" class="pagination pull-right">
+
                         </ul>
                     </nav>
 
@@ -136,19 +122,128 @@
     </div>
 </div>
 <script>
+    function getFormInfo(size){
+        console.log('开始调用图书列表');
+        $.ajax({
+            url: "http://localhost:8082/home/tslb1",
+            type: "POST",
+
+            data : JSON.stringify({
+                PageNum:size,
+                PageSize:10
+            }),
+            cache:false,
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data){
+                let html = "";
+                let cs;
+                let html1 = "";
+                let cs1;
+                for (let i=0; i<data.data.records.length; i++){
+                    cs = 'id="'+data.data.records[i].id+'"';
+
+                    html += "<tr><td>"+data.data.records[i].serialnumber+"</td><td>"+data.data.records[i].bookname+"</td><td>"+data.data.records[i].author+"</td><td>"+data.data.records[i].press+"</td><td>"+data.data.records[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+
+                }
+                $("#context").html(html);
+
+                let sjsl = data.data.total;
+                console.log(sjsl)
+                let yeshu = 0;
+                if (sjsl > 10){
+                    while (sjsl > 10){
+                        sjsl -= 10;
+                        yeshu++;
+                    }
+                }else {
+                    yeshu = 1;
+                }
+
+
+                for (let i=1; i<=yeshu;i++){
+                    cs1='<li><a onclick="getFormInfo('+i+')">'+i+'</a></li>';
+                    html1 += cs1;
+                }
+                $("#ye").html('<li><a  aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>'+html1+'<li> <a aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>');
+            },
+            error:function(err){
+                console.log('废物');
+            }
+        });
+    }
+
+
+
 
     $(function () {
-        $.post("http://localhost:8082/home/tslb",function (resp) {
-            var html = "";
-                var cs;
-            for (var i=0;i<resp.data.length;i++){
-                cs = 'id="'+resp.data[i].id+'"';
+        // $.post("http://localhost:8082/home/tslb1",{PageNum: 1,PageSize: 10},function (resp) {
+        //
+        //     var html = "";
+        //         var cs;
+        //     for (var i=0;i<resp.data.length;i++){
+        //         cs = 'id="'+resp.data[i].id+'"';
+        //
+        //         html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+        //
+        //     }
+        //     $("#context").html(html);
+        // })
 
-                html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+        console.log('开始调用图书列表');
+        $.ajax({
+            url: "http://localhost:8082/home/tslb1",
+            type: "POST",
 
+            data : JSON.stringify({
+                PageNum:1,
+                PageSize:10
+            }),
+            cache:false,
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data){
+                let html = "";
+                let cs;
+                let html1 = "";
+                let cs1;
+                for (let i=0; i<data.data.records.length; i++){
+                    cs = 'id="'+data.data.records[i].id+'"';
+
+                    html += "<tr><td>"+data.data.records[i].serialnumber+"</td><td>"+data.data.records[i].bookname+"</td><td>"+data.data.records[i].author+"</td><td>"+data.data.records[i].press+"</td><td>"+data.data.records[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+
+                }
+                $("#context").html(html);
+
+
+                let sjsl = data.data.total;
+                let yeshu = 0;
+                if (sjsl > 10){
+                    while (sjsl > 10){
+                        sjsl -= 10;
+                        yeshu++;
+                    }
+                }else {
+                    yeshu = 1;
+                }
+
+
+                for (let i=1; i<=yeshu;i++){
+                    cs1='<li><a onclick="getFormInfo('+i+')">'+i+'</a></li>';
+                    html1 += cs1;
+                }
+
+                // $("#ye").html(html1);
+                var box = document.getElementById("ye");
+                box.innerHTML='<li><a  aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>'+html1+'<li> <a  aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>';
+            },
+            error:function(err){
+                console.log('废物');
             }
-            $("#context").html(html);
-        })
+
+
+
+        });
     })
 
     function sc(param1) {
@@ -178,13 +273,16 @@
 
 
 
-    function ss() {
+    function ss1() {
+
         var xhrRes;
         var xmlHttpRequest = new XMLHttpRequest();
         var resp;
         var html = "";
         var cs;
-        var sm = document.getElementById("exampleInputAmount");
+        let html1 = "";
+        let cs1;
+        var sm = document.getElementById("exampleInputAmount").value;
         xmlHttpRequest.open("get","http://localhost:8082/home/selectbook?bookname="+sm,true);
 
         xmlHttpRequest.send();
@@ -198,7 +296,7 @@
                 console.log('return message====>' + xhrRes);
             }
 
-            resp = xhrRes.data;
+            resp = xhrRes;
             console.log('return resp====>' + resp);
             for (var i=0;i<resp.data.length;i++){
                 cs = 'id="'+resp.data[i].id+'"';
@@ -206,32 +304,92 @@
                 html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
 
             }
+            $("#context").html(html);
+
+            let sjsl = data.data.total;
+            let yeshu = 0;
+            if (sjsl > 10){
+                while (sjsl > 10){
+                    sjsl -= 10;
+                    yeshu++;
+                }
+            }else {
+                yeshu = 1;
+            }
+
+
+            for (let i=1; i<=yeshu;i++){
+                cs1='<li><a onclick="getFormInfo('+i+')">'+i+'</a></li>';
+                html1 += cs1;
+            }
+
+            // $("#ye").html(html1);
+            var box = document.getElementById("ye");
+            box.innerHTML='<li><a  aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>'+html1+'<li> <a  aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>';
 
             if (xhrRes.code === 0){
                 window.alert(xhrRes.msg);
-
-            }else if (xhrRes.code === 1){
-                window.alert(xhrRes.msg)
             }
         }
     }
 
+    function ss(size) {
+        const sm = document.getElementById("exampleInputAmount").value;
+        if (sm == ''){
+            getFormInfo(1);
+        }else{
 
-    var sm = document.getElementById("exampleInputAmount");
+            $.ajax({
+                url: "http://localhost:8082/home/selectbook1",
+                type: "POST",
 
-    $("#select").click(function () {
-        $.post("http://localhost:8082/home/selectbook",bookname=sm,function (resp) {
-            var html = "";
-            var cs;
-            for (var i=0;i<resp.data.length;i++){
-                cs = 'id="'+resp.data[i].id+'"';
+                data : JSON.stringify({
+                    PageNum:size,
+                    PageSize:10,
+                    BookName:sm
+                }),
+                cache:false,
+                contentType: "application/json",
+                dataType: "json",
+                success: function(data){
+                    let html = "";
+                    let cs;
+                    let html1 = "";
+                    let cs1;
+                    for (let i=0; i<data.data.records.length; i++){
+                        cs = 'id="'+data.data.records[i].id+'"';
 
-                html += "<tr><td>"+resp.data[i].serialnumber+"</td><td>"+resp.data[i].bookname+"</td><td>"+resp.data[i].author+"</td><td>"+resp.data[i].press+"</td><td>"+resp.data[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
+                        html += "<tr><td>"+data.data.records[i].serialnumber+"</td><td>"+data.data.records[i].bookname+"</td><td>"+data.data.records[i].author+"</td><td>"+data.data.records[i].press+"</td><td>"+data.data.records[i].bookprice+"</td><td class='text-center'> <a class='btn btn-primary btn-sm'>编辑</a> <a class='btn btn-danger btn-sm'  onclick='sc("+cs+")'>删除</a> </td> </tr>"
 
-            }
-            $("#context").html(html);
-        })
-    })
+                    }
+                    $("#context").html(html);
+
+                    let sjsl = data.data.total;
+                    console.log(sjsl)
+                    let yeshu = 0;
+                    if (sjsl > 10){
+                        while (sjsl > 10){
+                            sjsl -= 10;
+                            yeshu++;
+                        }
+                    }else {
+                        yeshu = 1;
+                    }
+
+
+                    for (let i=1; i<=yeshu;i++){
+                        cs1='<li><a onclick="ss1('+i+')">'+i+'</a></li>';
+                        html1 += cs1;
+                    }
+                    $("#ye").html('<li><a  aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>'+html1+'<li> <a aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>');
+                },
+                error:function(err){
+                    console.log('废物');
+                }
+            });
+        }
+
+    }
 
 
 

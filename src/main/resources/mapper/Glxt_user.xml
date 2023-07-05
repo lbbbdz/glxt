@@ -9,7 +9,7 @@
     </update>
 
 
-    <select id="getter1" resultType="com.example.demo.entity.Glxt_User">
+    <select id="getter1" resultType="com.example.demo.entity.GlxtUser">
         SELECT * from User1;
     </select>
     <select id="getPassword" resultType="map">

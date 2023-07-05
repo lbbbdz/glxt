@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.demo.entity.Glxt_User;
+import com.example.demo.entity.GlxtUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface LoginMapper  extends BaseMapper<Glxt_User> {
+public interface LoginMapper  extends BaseMapper<GlxtUser> {
 
-    public List<Glxt_User> getter1();
+    public List<GlxtUser> getter1();
 
     Map<String,Object> getPassword(@Param("username") String username);
 

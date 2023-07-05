@@ -2,10 +2,8 @@ package com.example.demo.Service.ServiceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Service.LoginService;
-import com.example.demo.entity.Glxt_User;
+import com.example.demo.entity.GlxtUser;
 import com.example.demo.dao.LoginMapper;
-import com.example.tool.R;
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +12,13 @@ import java.util.Map;
 
 @Service
 
-public class LoginServiceImpl extends ServiceImpl<LoginMapper, Glxt_User> implements LoginService {
+public class LoginServiceImpl extends ServiceImpl<LoginMapper, GlxtUser> implements LoginService {
 
     @Autowired(required = false)
     LoginMapper loginMapper;
 
     @Override
-    public List<Glxt_User> grouser1() {
+    public List<GlxtUser> grouser1() {
         System.out.println("sql查询.....");
         return loginMapper.getter1();
     }

@@ -8,10 +8,10 @@
         DELETE FROM glxt_books where id = #{id};
     </delete>
 
-    <select id="getBooks" resultType="com.example.demo.entity.Glxt_Books">
+    <select id="getBooks" resultType="com.example.demo.entity.GlxtBooks">
         SELECT  id,serialnumber,bookname,bookprice,author,press  FROM glxt_books order by serialnumber
     </select>
-    <select id="selectbook" resultType="com.example.demo.entity.Glxt_Books">
+    <select id="selectbook" resultType="com.example.demo.entity.GlxtBooks">
         SELECT  id,serialnumber,bookname,bookprice,author,press  FROM glxt_books where bookname like concat(concat('%',#{bookname}),'%') order by serialnumber
     </select>
 </mapper>
