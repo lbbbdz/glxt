@@ -207,6 +207,11 @@
             margin: 0.5rem 0;
             width: 100%;
         }
+        #HY{
+            position: fixed;
+            left: 92%;
+            top: 5%;
+        }
 
         @keyframes show {
 
@@ -226,33 +231,37 @@
 </head>
 
 <body>
+    <a id="HY" onclick="hy()" style="color: white"  >Chinese</a>
 <div class="container right-panel-active">
+
     <!-- Sign Up -->
     <div class="container__form container--signup">
         <form action="#" class="form" id="form1">
-            <h2 class="form__title">Sign Up</h2>
+            <h2 id="uuu" class="form__title">Sign Up</h2>
             <input id="yhmc" type="text" placeholder="User" class="input" />
             <input id="yx" type="email" placeholder="Email" class="input" />
             <input id="dlmm" type="password" placeholder="Password" class="input" />
-            <button class="btn" onclick="zc()">Sign Up</button>
+            <button id="Up" class="btn" onclick="zc()">Sign Up</button>
         </form>
     </div>
 
     <!-- Sign In -->
     <div class="container__form container--signin">
         <form action="#" class="form" id="form2">
-            <h2 class="form__title">Sign In</h2>
+            <h2 id="iii" class="form__title">Sign In</h2>
 <!--            type="email" placeholder="Email"-->
             <input id="username" type="username"  placeholder="Username" class="input" />
             <input id="password" type="password" placeholder="Password" class="input" />
-            <a href="page/chongzhi.html" class="link">Forgot your password?</a>
-            <button class="btn" onclick="Deng()">Sign In</button>
+            <a id="mmm" href="page/chongzhi.html" class="link">Forgot your password?</a>
+            <button id="In" class="btn" onclick="Deng()">Sign In</button>
         </form>
     </div>
 
     <!-- Overlay -->
     <div class="container__overlay">
+
         <div class="overlay">
+
             <div class="overlay__panel overlay--left">
                 <button class="btn" id="signIn">Sign In</button>
             </div>
@@ -334,6 +343,41 @@
                 window.alert(xhrRes.msg)
             }
         }
+    }
+    function hy() {
+        const zt = document.getElementById("HY").innerText;
+        console.log(zt);
+        if (zt === "Chinese"){
+            document.getElementById("HY").innerHTML = "English";
+            document.getElementById("Up").innerHTML = "注册";
+            document.getElementById("In").innerHTML = "登录";
+            document.getElementById("iii").innerHTML = "登录";
+            document.getElementById("uuu").innerHTML = "注册";
+            document.getElementById("mmm").innerHTML = "忘记密码？";
+            document.getElementById("signIn").innerHTML = "登录";
+            document.getElementById("signUp").innerHTML = "注册";
+            document.getElementById("username").setAttribute('placeholder','用户名');
+            document.getElementById("password").setAttribute('placeholder','密码');
+            document.getElementById("yhmc").setAttribute('placeholder','用户名');
+            document.getElementById("yx").setAttribute('placeholder','邮箱');
+            document.getElementById("dlmm").setAttribute('placeholder','密码');
+
+        }else {
+            document.getElementById("HY").innerHTML = "Chinese";
+            document.getElementById("Up").innerHTML = "Sign Up";
+            document.getElementById("In").innerHTML = "Sign In";
+            document.getElementById("iii").innerHTML = "Sign In";
+            document.getElementById("uuu").innerHTML = "Sign Up";
+            document.getElementById("mmm").innerHTML = "Forgot your password?";
+            document.getElementById("signIn").innerHTML = "SignIn";
+            document.getElementById("signUp").innerHTML = "SignUp";
+            document.getElementById("username").setAttribute('placeholder','UserName');
+            document.getElementById("password").setAttribute('placeholder','PassWord');
+            document.getElementById("yhmc").setAttribute('placeholder','User');
+            document.getElementById("yx").setAttribute('placeholder','Email');
+            document.getElementById("dlmm").setAttribute('placeholder','PassWord');
+        }
+
     }
 
 </script>
